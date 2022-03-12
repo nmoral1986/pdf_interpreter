@@ -1,4 +1,5 @@
 from tika import parser
+import pandas as pd
 
 
 def read_file(pdf_file):
@@ -16,9 +17,17 @@ def read_file(pdf_file):
             val = val_list[1]
             if 'DSR-' in dsr or 'DS-' in dsr:
                 data[dsr] = val
-    print(data)
+    return data
+
+
+def write_file(data):
+    keys = data.keys()
+    values = data.values()
+    df = pd.DataFrame({"Código de Servicio": keys, "Valor": values})
+    df.to_excel("results/result.xlsx")
 
 
 if __name__ == "__main__":
     pdf = 'data/FACTURA.pdf'
-    read_file(pdf)
+    data = read_file(pdf)
+    write_file(data)
