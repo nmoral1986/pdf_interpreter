@@ -33,7 +33,7 @@ def read_file(pdf_file):
         elif txt_temp and flag:
             txt_temp += line
     for line in new_text2:
-        if line is 'DSR-3695923':
+        if line == 'DSR-3695923':
             print('ERROR')
         if (('DSR-' in line) and ('$' in line)) or (('DS-' in line) and ('$' in line)):
             s_line = line.split('$')
