@@ -60,5 +60,6 @@ if __name__ == "__main__":
     dict_t = {}
     files = get_files()
     for file in files:
-        dict_t.update(read_file(f'data/{file}'))
+        if '.pdf' in file:
+            dict_t.update(read_file(f'data/{file}'))
     write_file(dict_t)
